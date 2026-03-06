@@ -1,0 +1,28 @@
+1. What's the difference between calling task.run() and new Thread(task).start()? Which one creates actual concurrency?
+-  Calling task.run() runs the code in the main thread, while new Thread(task).start() creates a new thread and
+   new Thread(task).start() is the one that creates an actual concurrency.
+
+2. Why do the threads finish in different orders each time in option 2? What does this tell you about concurrent execution?
+-  Threads finish in different orders in option2 because the CPU schedules them differently each run. This shows that
+   concurrent execution is not guaranteed to run in the same order.
+
+3. What would happen if you didn't call join() before accessing the results?
+-  If you don't call join() before accessing results, the main thread might print the results before the calculations finish,
+   which might lead to the results being incorrect or 0.
+
+4. How does thread execution interleave? Is the mixed console output random?
+-  Thread execution interleaves as the CPU switches between threads as they run. The mixed console output is not random as it
+   can change each run depending on scheduling.
+
+5. Why do we need the Thread.sleep() calls? What happens if you remove them?
+-  We need Thread.sleep() calls because it slows the threads down so we can see the concurrent execution. Removing the
+   calls will make the program finish faster.
+
+6. What happens to the calc object when you create the Runnable?
+-  When you create Runnable, it keeps a reference to the same CalculatorBase object, so the thread can read calc.n and store
+   the result in calc.result.
+
+7. Can you use a lambda expression instead of an anonymous class? Which is more concise and which is clearer?
+-  Yes, you can use lambda expressions instead of anonymous classes because Runnable has one method. Lambda is more concise,
+   while anonymous classes are more clear.
+
